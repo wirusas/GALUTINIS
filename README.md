@@ -1,22 +1,21 @@
 GALUTINIS
 
-The goal of this project is to implement an application to manage and get information about books.
-
 It will implement a back-end Spring Boot application and a front-end React application.
 
 APPLICATIONS:
 
 1. GALUTINIS-API:
 
-Web Java backend application exposes a Rest API to create, retrieve, edit and delete books.
+Web Java backend application exposes a Rest API.
 
-The application secured endpoints can just be accessed if a valid JWT access token is provided.
+The application's secured endpoints can just be accessed if a valid JWT access token is provided.
 
-order-api stores its data in H2 database.
+galutinis-api stores its data in H2 database.
   
 2. GALUTINIS-UI:
   
-  In order to access the application, a `user` or `admin` must login using his/her `username` and `password`. All the requests coming from `front-end` to secured endpoints in `back-end` have the JWT access token. This token is generated when the `user` or `admin` logins.
+  In order to access the application `admin` must login using his/her `username` and `password`. All the requests coming from `front-end` to secured endpoints in `back-end` have the JWT access token. This token is generated when the `admin` logins.
+  `user` does not have to login, all data might be accessed without authorization.
 
   
  
@@ -58,10 +57,10 @@ order-api stores its data in H2 database.
 
 ## Applications URLs
 
-  | `back-end`     | `http://localhost:8080`      | `ADMIN`, `USER`                                     |
-  | `front-end`    | `http://localhost:3000/`     | `admin/admin`, `user/user` or signing up a new user |
+  | `back-end`     | `http://localhost:8080`      | `ADMIN`                                     |
+  | `front-end`    | `http://localhost:3000/`     | `admin/admin`|
 
-> **Note**: the credentials shown in the table are the ones already pre-defined. You can signup new users.
+> **Note**: the credentials shown in the table are the ones already pre-defined.
 
 - **Manual Endpoints Test using Swagger**
   
