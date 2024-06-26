@@ -62,7 +62,7 @@ galutinis-api stores its data in H2 database.
 
 > **Note**: the credentials shown in the table are the ones already pre-defined.
 
-- **Manual Endpoints Test using Swagger**
+- **Manual Endpoint to Test using Swagger**
   
  http://localhost:8080/swagger-ui/index.html
     
