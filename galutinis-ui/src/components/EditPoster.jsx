@@ -17,6 +17,7 @@ export const EditPoster = ({ posterId }) => {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [posterCategories, setPosterCategories] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -43,7 +44,22 @@ export const EditPoster = ({ posterId }) => {
       }
     };
 
-    fetchPosterDetails(); 
+    const fetchPosterCategories = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`${BASE_URL}/api/categories`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPosterCategories(response.data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchPosterCategories();
+    fetchPosterDetails();
   }, [posterId]);
 
   const handleFormChange = (event) => {
@@ -64,7 +80,7 @@ export const EditPoster = ({ posterId }) => {
         },
       });
       toggleForm();
-      window.location.reload(false); // Refresh the page after successful submission
+      window.location.reload(false);
     } catch (error) {
       console.error("Error updating poster:", error);
     }
@@ -137,11 +153,18 @@ export const EditPoster = ({ posterId }) => {
             <Form.Group controlId="category">
               <Form.Label>Category:</Form.Label>
               <Form.Control
-                type="text"
+                as="select"
                 name="category"
                 value={form.category}
                 onChange={handleFormChange}
-              />
+              >
+                <option value="">Select a category...</option>
+                {posterCategories.map((category) => (
+                  <option key={category.id} value={category.posterCategory}>
+                    {category.posterCategory}
+                  </option>
+                ))}
+              </Form.Control>
             </Form.Group>
             <div className="d-flex justify-content-end" style={{ marginTop: "1rem" }}>
               <Button variant="secondary" onClick={toggleForm} className="mr-2">
