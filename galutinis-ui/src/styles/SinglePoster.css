@@ -1,0 +1,21 @@
+.single-poster-card li{
+    list-style-type: none;
+   }
+
+   .single {max-width: 400px;
+margin: 0 auto;}
+
+.single-poster-card ul{
+    text-align: center;
+    margin: 0 auto;
+    max-width: 60%;
+    padding-left: 0;
+
+    
+}
+.back-button{
+    background-color: black;
+    max-width: 250px;
+    text-align: center;
+    margin: 1rem auto;
+}
